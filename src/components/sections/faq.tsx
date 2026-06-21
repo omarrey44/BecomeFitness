@@ -40,7 +40,7 @@ export function Faq() {
                     </span>
                     <Plus
                       className={`h-5 w-5 shrink-0 text-charcoal/50 transition-transform duration-300 ${
-                        isOpen ? "rotate-45 text-olive" : ""
+                        isOpen ? "rotate-45 text-forest" : ""
                       }`}
                     />
                   </button>

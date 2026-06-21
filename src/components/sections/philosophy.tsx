@@ -23,9 +23,9 @@ export function Philosophy() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <blockquote className="mt-10 border-l-2 border-lime pl-6">
-                <p className="font-display text-2xl font-semibold leading-snug sm:text-3xl">
-                  <span className="marker">{philosophy.quote}</span>
+              <blockquote className="mt-10 border-l-2 border-forest pl-6">
+                <p className="font-display text-2xl font-semibold leading-snug text-charcoal sm:text-3xl">
+                  {philosophy.quote}
                 </p>
               </blockquote>
             </Reveal>

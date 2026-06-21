@@ -15,9 +15,10 @@
   --color-paper-dim: #e9e6dc;
   --color-sand: #d8d3c4; /* warm neutral */
   --color-gray-soft: #b8b9b5;
-  --color-lime: #c7f000; /* electric lime accent */
+  --color-lime: #c7f000; /* electric lime accent — DARK backgrounds only */
   --color-lime-dim: #a8c900;
   --color-olive: #7a8a3a; /* muted olive */
+  --color-forest: #45561c; /* deep green accent — readable on light/beige */
   --color-ember: #ff6b35; /* optional warm accent, used sparingly */
 
   /* Typography */
