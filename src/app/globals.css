@@ -1,26 +1,184 @@
 @import "tailwindcss";
 
+/* ----------------------------------------------------------------------------
+   BECOME Fitness & Strength — Design System (Tailwind v4)
+   Editorial strength-coaching aesthetic: charcoal canvas, warm paper sections,
+   electric lime as a disciplined accent, measurement-inspired detailing.
+---------------------------------------------------------------------------- */
+
+@theme {
+  /* Brand palette */
+  --color-ink: #080909; /* deep black */
+  --color-charcoal: #101212; /* primary charcoal */
+  --color-charcoal-soft: #181b1b;
+  --color-paper: #f4f2ec; /* warm white */
+  --color-paper-dim: #e9e6dc;
+  --color-sand: #d8d3c4; /* warm neutral */
+  --color-gray-soft: #b8b9b5;
+  --color-lime: #c7f000; /* electric lime accent */
+  --color-lime-dim: #a8c900;
+  --color-olive: #7a8a3a; /* muted olive */
+  --color-ember: #ff6b35; /* optional warm accent, used sparingly */
+
+  /* Typography */
+  --font-display: var(--font-sora), "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono-data), ui-monospace, monospace;
+
+  /* Radii */
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-charcoal);
+  --foreground: var(--color-paper);
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    border-color: color-mix(in oklab, var(--color-paper) 12%, transparent);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem; /* offset fixed navbar on anchor scroll */
+  }
+
+  body {
+    background: var(--color-charcoal);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  /* Snappier taps, controlled highlight on touch devices */
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: color-mix(in oklab, var(--color-lime) 25%, transparent);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  /* Focus visibility — accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Smooth anchor scroll, unless the user opts out */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Editorial display sizing */
+  .text-display {
+    font-size: clamp(2.75rem, 8vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+
+  .text-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .data-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Film grain overlay for atmosphere */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Measurement-inspired hairline ticks */
+  .ruler-x {
+    background-image: repeating-linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-paper) 16%, transparent) 0,
+      color-mix(in oklab, var(--color-paper) 16%, transparent) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+  }
+
+  /* High-contrast editorial photo treatment */
+  .photo-editorial {
+    filter: grayscale(1) contrast(1.08) brightness(0.95);
+    transition: filter 0.7s var(--ease-out-expo);
+  }
+  .photo-editorial:hover {
+    filter: grayscale(0.35) contrast(1.05) brightness(1) sepia(0.12);
+  }
+
+  .photo-warm {
+    filter: contrast(1.05) saturate(0.92) sepia(0.08);
+  }
+
+  /* Lime text-underline marker */
+  .marker {
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      color-mix(in oklab, var(--color-lime) 55%, transparent) 0%
+    );
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 0.32em;
+  }
+}
+
+/* Respect reduced motion globally for framer-driven content */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
