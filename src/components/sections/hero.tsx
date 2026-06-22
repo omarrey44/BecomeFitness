@@ -71,7 +71,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="grain relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-ink pb-10 pt-28 sm:pb-12"
+      className="grain relative isolate flex min-h-[84svh] flex-col justify-end overflow-hidden bg-ink pb-8 pt-24 lg:min-h-[88vh]"
     >
       {/* Background photograph */}
       <div className="absolute inset-0 -z-10">
@@ -116,7 +116,7 @@ export function Hero() {
               Personal Strength &amp; Body Composition Coaching
             </motion.p>
 
-            <h1 className="mt-5 text-display max-w-4xl font-extrabold uppercase">
+            <h1 className="mt-4 max-w-3xl text-[clamp(2.3rem,5.4vw,4.6rem)] font-extrabold uppercase leading-[0.95]">
               {headlineLines.map((line, i) => (
                 <span key={line} className="block overflow-hidden">
                   <motion.span
@@ -139,7 +139,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="mt-7 max-w-md text-lg leading-relaxed text-gray-soft"
+              className="mt-5 max-w-md text-base leading-relaxed text-gray-soft"
             >
               Personalized strength and fitness coaching designed around your
               body, your goals, and the life you want to live.
@@ -149,7 +149,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.7 }}
-              className="mt-9 flex flex-wrap items-center gap-3"
+              className="mt-7 flex flex-wrap items-center gap-3"
             >
               <a
                 href="#contact"
@@ -203,7 +203,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.7 }}
-          className="relative mt-10 overflow-hidden rounded-2xl border border-paper/12 bg-charcoal/55 backdrop-blur-md"
+          className="relative mt-8 overflow-hidden rounded-2xl border border-paper/12 bg-charcoal/55 backdrop-blur-md"
         >
           <div className="grid grid-cols-1 divide-y divide-paper/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
             {trustBar.map((item) => (
